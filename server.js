@@ -44,7 +44,7 @@ app.post('/api/connect', async (req, res) => {
   const session = sessions[videoId];
 
   try {
-    const liveChat = new LiveChat({ videoId });
+    const liveChat = new LiveChat({ liveId: videoId });
 
     liveChat.on('chat', (chatItem) => {
       try {
