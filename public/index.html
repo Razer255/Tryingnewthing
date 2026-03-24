@@ -26,18 +26,15 @@
   .live-dot { width: 7px; height: 7px; background: var(--red); border-radius: 50%; animation: pulse 1.4s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-  /* ── LAYOUT: left=chat, right=controls ── */
   .layout { display: grid; grid-template-columns: 1fr 380px; gap: 16px; max-width: 1100px; margin: 0 auto; padding: 24px 24px 60px; }
-
   .card { background: var(--dark2); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
   .card-label { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
 
-  /* ── LIVE CHAT PANEL ── */
+  /* Chat */
   .chat-panel { display: flex; flex-direction: column; height: calc(100vh - 120px); min-height: 500px; }
   .chat-feed { flex: 1; overflow-y: auto; padding: 4px 0; display: flex; flex-direction: column; gap: 2px; }
   .chat-feed::-webkit-scrollbar { width: 3px; }
   .chat-feed::-webkit-scrollbar-thumb { background: var(--dark4); border-radius: 4px; }
-
   .chat-msg { display: flex; align-items: flex-start; gap: 8px; padding: 5px 8px; border-radius: 8px; animation: msgIn 0.25s ease both; font-size: 13px; line-height: 1.4; }
   .chat-msg:hover { background: var(--dark3); }
   @keyframes msgIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
@@ -45,43 +42,41 @@
   .chat-author { font-weight: 500; font-size: 12px; flex-shrink: 0; }
   .chat-colon { color: var(--muted); margin: 0 4px; }
   .chat-text { color: var(--text); word-break: break-word; }
+  .chat-msg.is-entry { background: rgba(0,230,118,0.05); }
   .chat-msg.is-entry .chat-text { color: var(--green); }
   .chat-msg.is-paid { background: rgba(255,212,59,0.06); border: 1px solid rgba(255,212,59,0.12); }
   .chat-msg.is-paid .chat-text { color: var(--yellow); }
   .superchat-amt { font-size: 11px; color: var(--yellow); margin-left: 6px; font-weight: 500; }
-
   .chat-empty { color: var(--muted); font-size: 13px; text-align: center; padding-top: 80px; }
 
-  /* ── RIGHT COLUMN ── */
+  /* Right col */
   .right-col { display: flex; flex-direction: column; gap: 14px; }
-
-  /* Connect */
   .connect-row { display: flex; gap: 8px; }
   .connect-row input { flex: 1; background: var(--dark3); border: 1px solid var(--border); border-radius: 10px; padding: 10px 13px; color: var(--text); font-size: 13px; font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.2s; }
   .connect-row input:focus { border-color: rgba(255,0,51,0.5); }
   .connect-row input::placeholder { color: var(--muted); }
+
   .btn { background: var(--red); border: none; border-radius: 10px; padding: 10px 20px; color: white; font-size: 13px; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background 0.15s, transform 0.1s; white-space: nowrap; }
   .btn:hover { background: var(--red-dark); }
   .btn:active { transform: scale(0.97); }
   .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
   .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--muted); font-family: 'DM Sans', sans-serif; border-radius: 10px; padding: 10px 16px; font-size: 13px; cursor: pointer; transition: background 0.15s; white-space: nowrap; }
   .btn-ghost:hover { background: var(--dark3); color: var(--text); }
+
   .status-bar { margin-top: 8px; font-size: 12px; color: var(--muted); min-height: 16px; }
   .status-bar.ok { color: var(--green); }
   .status-bar.err { color: #ff6b6b; }
 
-  /* Stats row */
   .stats-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
   .stat { background: var(--dark3); border-radius: 10px; padding: 11px; text-align: center; }
   .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: white; line-height: 1; }
   .stat-lbl { font-size: 10px; color: var(--muted); margin-top: 2px; }
 
-  /* Entry banner */
-  .entry-banner { background: rgba(0,230,118,0.06); border: 1px solid rgba(0,230,118,0.15); border-radius: 10px; padding: 10px 14px; font-size: 12px; color: var(--muted); line-height: 1.6; }
-  .entry-banner strong { color: var(--green); }
+  /* Entry banner — shows keyword publicly */
+  .entry-banner { background: rgba(0,230,118,0.06); border: 1px solid rgba(0,230,118,0.15); border-radius: 10px; padding: 10px 14px; font-size: 13px; color: var(--muted); line-height: 1.6; display: flex; align-items: center; gap: 10px; }
+  .kw-pill { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.06em; color: var(--green); background: rgba(0,230,118,0.1); border: 1px solid rgba(0,230,118,0.2); border-radius: 8px; padding: 3px 12px; flex-shrink: 0; }
 
-  /* Entrant list */
-  .entrant-scroll { background: var(--dark3); border-radius: 10px; height: 140px; overflow-y: auto; padding: 8px 10px; }
+  .entrant-scroll { background: var(--dark3); border-radius: 10px; height: 130px; overflow-y: auto; padding: 8px 10px; margin-top: 10px; }
   .entrant-scroll::-webkit-scrollbar { width: 3px; }
   .entrant-scroll::-webkit-scrollbar-thumb { background: var(--dark4); border-radius: 4px; }
   .entrant-row { display: flex; align-items: center; gap: 7px; padding: 4px 5px; border-radius: 6px; font-size: 12px; animation: msgIn 0.2s ease both; }
@@ -100,35 +95,51 @@
   .draw-row .btn      { flex: 1; padding: 13px; font-size: 14px; }
   .draw-row .btn-ghost { padding: 13px 16px; }
 
-  /* ── ADMIN ── */
-  #admin-panel { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; }
+  /* ── ADMIN PANEL ── */
+  #admin-panel { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.88); align-items: center; justify-content: center; }
   #admin-panel.show { display: flex; }
-  .admin-box { background: var(--dark2); border: 1px solid rgba(255,0,51,0.3); border-radius: 20px; padding: 28px; width: 100%; max-width: 440px; }
+  .admin-box { background: var(--dark2); border: 1px solid rgba(255,0,51,0.25); border-radius: 20px; padding: 28px; width: 100%; max-width: 460px; }
   .admin-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.06em; color: var(--red); margin-bottom: 4px; }
-  .admin-sub { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
-  .admin-field { margin-bottom: 14px; }
-  .admin-field label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 5px; letter-spacing: 0.05em; text-transform: uppercase; }
-  .admin-field input { width: 100%; background: var(--dark3); border: 1px solid var(--border); border-radius: 10px; padding: 10px 13px; color: var(--text); font-size: 13px; font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.2s; }
-  .admin-field input:focus { border-color: rgba(255,0,51,0.5); }
-  .admin-field input::placeholder { color: var(--muted); }
-  .admin-mode-row { display: flex; gap: 8px; margin-bottom: 16px; }
+  .admin-sub { font-size: 12px; color: var(--muted); margin-bottom: 22px; line-height: 1.6; }
+
+  .admin-field { margin-bottom: 16px; }
+  .admin-field label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 6px; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  /* Input with optional show/hide toggle */
+  .input-wrap { position: relative; display: flex; align-items: center; }
+  .input-wrap input {
+    width: 100%; background: var(--dark3); border: 1px solid var(--border);
+    border-radius: 10px; padding: 10px 40px 10px 13px; color: var(--text);
+    font-size: 14px; font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.2s;
+  }
+  .input-wrap input:focus { border-color: rgba(255,0,51,0.5); }
+  .input-wrap input::placeholder { color: var(--muted); }
+  .eye-btn { position: absolute; right: 10px; background: none; border: none; cursor: pointer; color: var(--muted); font-size: 16px; padding: 4px; transition: color 0.15s; }
+  .eye-btn:hover { color: var(--text); }
+
+  .admin-mode-row { display: flex; gap: 8px; margin-bottom: 14px; }
   .mode-btn { flex: 1; padding: 9px; border-radius: 10px; font-size: 12px; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.15s; border: 1px solid var(--border); background: var(--dark3); color: var(--muted); }
   .mode-btn.active { background: rgba(255,0,51,0.15); border-color: rgba(255,0,51,0.5); color: var(--red); }
   .admin-winner-field { display: none; }
   .admin-winner-field.show { display: block; }
-  .admin-status { font-size: 12px; margin-top: 8px; min-height: 16px; }
+
+  .admin-status { font-size: 12px; margin-top: 10px; min-height: 16px; }
   .admin-status.ok  { color: var(--green); }
   .admin-status.err { color: #ff6b6b; }
-  .admin-btn-row { display: flex; gap: 8px; margin-top: 16px; }
+  .admin-btn-row { display: flex; gap: 8px; margin-top: 18px; }
   .admin-btn-row .btn { flex: 1; }
-  .winner-preview { margin-top: 10px; padding: 9px 12px; background: rgba(0,230,118,0.08); border: 1px solid rgba(0,230,118,0.2); border-radius: 10px; font-size: 12px; color: var(--green); display: none; }
-  .winner-preview.show { display: block; }
+
+  /* Live settings display inside admin */
+  .current-settings { background: var(--dark3); border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; font-size: 12px; line-height: 1.8; color: var(--muted); }
+  .current-settings span { color: var(--text); font-weight: 500; }
+  .current-settings .tag { display: inline-block; background: rgba(255,0,51,0.12); color: var(--red); border-radius: 6px; padding: 1px 8px; font-size: 11px; font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
+  .current-settings .tag.green { background: rgba(0,230,118,0.12); color: var(--green); }
 
   #confetti-canvas { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9999; display:none; }
 
   @media (max-width: 700px) {
     .layout { grid-template-columns: 1fr; }
-    .chat-panel { height: 400px; }
+    .chat-panel { height: 360px; }
     header { padding: 18px 16px 0; }
     .layout { padding: 16px 14px 40px; }
   }
@@ -137,29 +148,48 @@
 <body>
 <canvas id="confetti-canvas"></canvas>
 
-<!-- ADMIN — Ctrl+Shift+A -->
+<!-- ADMIN PANEL — Ctrl+Shift+A -->
 <div id="admin-panel">
   <div class="admin-box">
     <div class="admin-title">Admin Panel</div>
-    <div class="admin-sub">Invisible to viewers. Esc to close.</div>
-    <div class="admin-field">
-      <label>Entry Keyword</label>
-      <input type="text" id="admin-keyword" placeholder="!enter"/>
+    <div class="admin-sub">Secret controls — invisible to viewers.<br>Press <strong style="color:var(--text)">Esc</strong> or click outside to close.</div>
+
+    <!-- Current live settings summary -->
+    <div class="current-settings" id="current-settings">
+      Keyword: <span id="cs-kw">!enter</span> &nbsp;·&nbsp;
+      Mode: <span id="cs-mode"><span class="tag green">Random</span></span> &nbsp;·&nbsp;
+      Entrants: <span id="cs-count">0</span>
     </div>
+
+    <!-- Keyword -->
+    <div class="admin-field">
+      <label>Entry Keyword (viewers type this to enter)</label>
+      <div class="input-wrap">
+        <input type="text" id="admin-keyword" placeholder="e.g. !join or giveaway"/>
+      </div>
+    </div>
+
+    <!-- Draw mode -->
     <div class="admin-field">
       <label>Draw Mode</label>
       <div class="admin-mode-row">
         <button class="mode-btn active" id="mode-random" onclick="setMode('random')">🎲 True Random</button>
         <button class="mode-btn" id="mode-rigged" onclick="setMode('rigged')">🎯 Pick Winner</button>
       </div>
+
+      <!-- Secret winner — hidden by default, toggle with eye button -->
       <div class="admin-winner-field" id="winner-field">
-        <input type="text" id="admin-winner" placeholder="Exact YouTube display name..."/>
-        <div class="winner-preview" id="winner-preview"></div>
+        <div class="input-wrap">
+          <input type="password" id="admin-winner" placeholder="Exact YouTube display name..."/>
+          <button class="eye-btn" onclick="toggleWinner()" title="Show/hide">👁</button>
+        </div>
       </div>
     </div>
+
     <div class="admin-status" id="admin-status"></div>
+
     <div class="admin-btn-row">
-      <button class="btn" onclick="saveAdmin()">Save</button>
+      <button class="btn" onclick="saveAdmin()">Apply Changes</button>
       <button class="btn-ghost" onclick="closeAdmin()">Close</button>
     </div>
   </div>
@@ -175,7 +205,7 @@
 
 <div class="layout">
 
-  <!-- LEFT: Live Chat Feed -->
+  <!-- LEFT: Chat -->
   <div class="card chat-panel">
     <div class="card-label">Live Chat</div>
     <div class="chat-feed" id="chat-feed">
@@ -183,7 +213,7 @@
     </div>
   </div>
 
-  <!-- RIGHT: Controls -->
+  <!-- RIGHT -->
   <div class="right-col">
 
     <!-- Connect -->
@@ -210,12 +240,11 @@
     <div class="card">
       <div class="card-label">Entrants</div>
       <div class="entry-banner">
-        Type <strong id="kw-display">!enter</strong> in chat to join the giveaway
+        <div class="kw-pill" id="kw-display">!enter</div>
+        <span>Type in chat to join</span>
       </div>
-      <div style="margin-top:10px">
-        <div class="entrant-scroll" id="entrant-scroll">
-          <div style="color:var(--muted);font-size:12px;text-align:center;padding-top:30px">No entrants yet</div>
-        </div>
+      <div class="entrant-scroll" id="entrant-scroll">
+        <div style="color:var(--muted);font-size:12px;text-align:center;padding-top:20px">No entrants yet</div>
       </div>
     </div>
 
@@ -236,7 +265,7 @@
 </div>
 
 <script>
-  // ── Config ──
+  // ── Config (all controlled via admin panel, nothing hardcoded) ──
   let KEYWORD       = '!enter';
   let SECRET_WINNER = '';
   let drawMode      = 'random';
@@ -261,6 +290,7 @@
     document.getElementById('admin-keyword').value = KEYWORD;
     document.getElementById('admin-winner').value  = SECRET_WINNER;
     setMode(drawMode);
+    updateCurrentSettings();
     document.getElementById('admin-panel').classList.add('show');
   }
   function closeAdmin() {
@@ -273,22 +303,53 @@
     document.getElementById('mode-rigged').classList.toggle('active', mode === 'rigged');
     document.getElementById('winner-field').classList.toggle('show', mode === 'rigged');
   }
+  function toggleWinner() {
+    const inp = document.getElementById('admin-winner');
+    inp.type = inp.type === 'password' ? 'text' : 'password';
+  }
+  function updateCurrentSettings() {
+    document.getElementById('cs-kw').textContent    = KEYWORD;
+    document.getElementById('cs-count').textContent = entrants.length;
+    const modeEl = document.getElementById('cs-mode');
+    if (drawMode === 'rigged' && SECRET_WINNER) {
+      // Show masked winner — only first 2 chars + asterisks
+      const masked = SECRET_WINNER.slice(0,2) + '●'.repeat(Math.max(3, SECRET_WINNER.length - 2));
+      modeEl.innerHTML = `<span class="tag">Rigged · ${masked}</span>`;
+    } else {
+      modeEl.innerHTML = `<span class="tag green">Random</span>`;
+    }
+  }
   function saveAdmin() {
     const kw     = document.getElementById('admin-keyword').value.trim();
     const winner = document.getElementById('admin-winner').value.trim();
     const st     = document.getElementById('admin-status');
-    if (!kw) { st.textContent = 'Keyword required.'; st.className = 'admin-status err'; return; }
-    if (drawMode === 'rigged' && !winner) { st.textContent = 'Enter winner name or switch to Random.'; st.className = 'admin-status err'; return; }
+
+    if (!kw) { st.textContent = 'Keyword is required.'; st.className = 'admin-status err'; return; }
+    if (drawMode === 'rigged' && !winner) { st.textContent = 'Enter a winner name or switch to Random.'; st.className = 'admin-status err'; return; }
+
+    const kwChanged = kw.toLowerCase() !== KEYWORD;
+
     KEYWORD       = kw.toLowerCase();
     SECRET_WINNER = drawMode === 'rigged' ? winner : '';
+
+    // Update public keyword display
     document.getElementById('kw-display').textContent = kw;
-    if (drawMode === 'rigged') {
-      const p = document.getElementById('winner-preview');
-      p.textContent = '🔒 Locked: ' + winner; p.classList.add('show');
+
+    // If keyword changed, clear entrant pool so it restarts fresh
+    if (kwChanged) {
+      entrants   = [];
+      entrantSet = new Set();
+      renderEntrants();
+      st.textContent = `Saved! Keyword changed to "${kw}" — entrant pool cleared.`;
+    } else {
+      st.textContent = 'Settings saved!';
     }
-    st.textContent = 'Saved!'; st.className = 'admin-status ok';
-    setTimeout(closeAdmin, 700);
+
+    st.className = 'admin-status ok';
+    updateCurrentSettings();
+    setTimeout(closeAdmin, 1000);
   }
+
   document.addEventListener('keydown', e => {
     if (e.ctrlKey && e.shiftKey && e.key === 'A') { e.preventDefault(); openAdmin(); }
     if (e.key === 'Escape') closeAdmin();
@@ -322,7 +383,7 @@
 
   function stopLive() {
     clearTimeout(pollTimer);
-    if (currentVideoId) fetch('/api/disconnect', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ videoId: currentVideoId }) });
+    if (currentVideoId) fetch('/api/disconnect', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({videoId:currentVideoId}) });
     currentVideoId = '';
     document.getElementById('live-badge').classList.remove('show');
     document.getElementById('connect-btn').style.display = '';
@@ -330,7 +391,7 @@
     setStatus('Disconnected. Data preserved.', '');
   }
 
-  // ── Poll backend for new messages ──
+  // ── Poll ──
   function startPolling() {
     async function poll() {
       if (!currentVideoId) return;
@@ -341,20 +402,23 @@
           processMessages(d.messages);
           lastTs = Math.max(...d.messages.map(m => m.ts));
         }
-        setStatus(`Live · ${allMessages.length} messages · ${entrants.length} entrants`, 'ok');
-      } catch(e) { /* silent retry */ }
-      pollTimer = setTimeout(poll, 1500); // poll backend every 1.5s (no quota cost)
+        if (d.chatters) {
+          document.getElementById('stat-viewers').textContent = d.chatters;
+        }
+        setStatus(`Live · ${allMessages.length} msgs · ${entrants.length} entrants`, 'ok');
+      } catch(e) {}
+      pollTimer = setTimeout(poll, 1500);
     }
     poll();
   }
 
-  // ── Process incoming messages ──
+  // ── Process messages ──
   function processMessages(messages) {
     messages.forEach(msg => {
       allMessages.push(msg);
       chatters.add(msg.author);
-      const isEntry = msg.text.toLowerCase().trim() === KEYWORD
-                   || msg.text.toLowerCase().trim().startsWith(KEYWORD + ' ');
+      const msgLower = (msg.text || '').toLowerCase().trim();
+      const isEntry  = msgLower === KEYWORD || msgLower.startsWith(KEYWORD + ' ');
       if (isEntry && !entrantSet.has(msg.author)) {
         entrantSet.add(msg.author);
         entrants.push(msg.author);
@@ -363,6 +427,7 @@
     });
     updateStats();
     renderEntrants();
+    updateCurrentSettings();
   }
 
   // ── Render chat message ──
@@ -379,18 +444,13 @@
         <span class="chat-text">${esc(msg.text)}${msg.isPaid && msg.amount ? `<span class="superchat-amt">${esc(msg.amount)}</span>` : ''}</span>
       </div>`;
     feed.appendChild(div);
-
-    // Keep max 300 messages in DOM
     while (feed.children.length > 300) feed.removeChild(feed.firstChild);
-
-    // Auto scroll to bottom
     if (autoScroll) feed.scrollTop = feed.scrollHeight;
   }
 
-  // Auto scroll toggle
-  const feed = document.getElementById('chat-feed');
-  feed.addEventListener('scroll', () => {
-    autoScroll = feed.scrollTop + feed.clientHeight >= feed.scrollHeight - 40;
+  const chatFeed = document.getElementById('chat-feed');
+  chatFeed.addEventListener('scroll', () => {
+    autoScroll = chatFeed.scrollTop + chatFeed.clientHeight >= chatFeed.scrollHeight - 40;
   });
 
   function updateStats() {
@@ -403,7 +463,7 @@
     const scroll = document.getElementById('entrant-scroll');
     scroll.innerHTML = '';
     if (entrants.length === 0) {
-      scroll.innerHTML = `<div style="color:var(--muted);font-size:12px;text-align:center;padding-top:30px">No entrants yet</div>`;
+      scroll.innerHTML = `<div style="color:var(--muted);font-size:12px;text-align:center;padding-top:20px">No entrants yet</div>`;
       return;
     }
     [...entrants].reverse().forEach((name, i) => {
@@ -421,7 +481,7 @@
   // ── Draw ──
   function startDraw() {
     if (isDrawing) return;
-    if (entrants.length < 2) { alert('Need at least 2 entrants. Tell viewers to type ' + KEYWORD); return; }
+    if (entrants.length < 2) { alert('Need at least 2 entrants first.'); return; }
 
     let finalWinner;
     if (drawMode === 'rigged' && SECRET_WINNER) {
@@ -446,8 +506,8 @@
     function step() {
       const p = elapsed / totalMs;
       interval = 50 + (340 - 50) * Math.pow(p, 2.3);
-      if (elapsed < totalMs * 0.87)       ticker.textContent = others.length ? others[Math.floor(Math.random()*others.length)] : finalWinner;
-      else if (elapsed < totalMs)         ticker.textContent = Math.random() > 0.42 ? finalWinner : (others.length ? others[Math.floor(Math.random()*others.length)] : finalWinner);
+      if (elapsed < totalMs * 0.87)      ticker.textContent = others.length ? others[Math.floor(Math.random()*others.length)] : finalWinner;
+      else if (elapsed < totalMs)        ticker.textContent = Math.random() > 0.42 ? finalWinner : (others.length ? others[Math.floor(Math.random()*others.length)] : finalWinner);
       else {
         ticker.textContent = finalWinner; ticker.className = 'ticker-name winner';
         document.getElementById('ticker-label').textContent = '🏆 Winner!';
